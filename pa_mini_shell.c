@@ -181,8 +181,7 @@ int countCommands(char **args)
 */
 int launch(char **args)
 {
-  pid_t pid;
-  pid_t wpid;
+  pid_t pid;\
   int status;
 
   // Forking: duplicating the process.  
@@ -201,7 +200,7 @@ int launch(char **args)
     // Parent process
     do {
       // Waiting while program finish running.
-      wpid = waitpid(pid, &status, WUNTRACED);
+      waitpid(pid, &status, WUNTRACED);
     } while (!WIFEXITED(status) && !WIFSIGNALED(status));
   }
 
@@ -221,7 +220,6 @@ int fileIO(char **argsWithoutRedirection, char *inputFile, char *outputFile, int
 {
   int fileDescriptor;
   pid_t pid;
-  pid_t wpid;
   int status;
 
   // Forking: duplicating the process.  
@@ -259,7 +257,7 @@ int fileIO(char **argsWithoutRedirection, char *inputFile, char *outputFile, int
     // Parent process
     do {
       // Waiting while program finish running.
-      wpid = waitpid(pid, &status, WUNTRACED);
+      waitpid(pid, &status, WUNTRACED);
     } while (!WIFEXITED(status) && !WIFSIGNALED(status));
   }
 
