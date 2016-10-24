@@ -181,7 +181,8 @@ int countCommands(char **args)
 */
 int launch(char **args)
 {
-  pid_t pid, wpid;
+  pid_t pid;
+  pid_t wpid;
   int status;
 
   // Forking: duplicating the process.  
@@ -219,7 +220,8 @@ int launch(char **args)
 int fileIO(char **argsWithoutRedirection, char *inputFile, char *outputFile, int option)
 {
   int fileDescriptor;
-  pid_t pid, wpid;
+  pid_t pid;
+  pid_t wpid;
   int status;
 
   // Forking: duplicating the process.  
