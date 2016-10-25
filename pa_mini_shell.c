@@ -47,7 +47,7 @@ void welcomeMessage(){
         printf("\t----------------------------------------------------------------\n");
         printf("\t   Redirection use examples:.\n");
         printf("\t      1. ls > list.txt\n");
-        printf("\t      1. sort < letters > sorted_list\n");
+        printf("\t      2. sort < letters > sorted_list\n");
         printf("\n\n");
 }
 
