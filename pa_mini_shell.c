@@ -250,7 +250,9 @@ int fileIO(char **argsWithoutRedirection, char *inputFile, char *outputFile, int
       // Same as before for the output file.
       fileDescriptor = open(outputFile, O_CREAT | O_TRUNC | O_WRONLY, 0600);
 
+      // We replace standard output with the appropriate file.
       dup2(fileDescriptor, STDOUT_FILENO);
+      
       close(fileDescriptor);     
     }
 
