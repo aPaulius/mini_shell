@@ -229,21 +229,27 @@ int fileIO(char **argsWithoutRedirection, char *inputFile, char *outputFile, int
   pid = fork();
 
   if (pid == 0) {
-    // Option 0: output redirection
+    // Option 0: output redirection.
     if (option == 0) {
-      // We open (create) the file truncating it at 0, for write only
+      // We open (create) the file truncating it at 0, for write only. 0600 - owner can read and write.
       fileDescriptor = open(outputFile, O_CREAT | O_TRUNC | O_WRONLY, 0600); 
-      // We replace de standard output with the appropriate file
+
+      // We replace standard output with the appropriate file.
       dup2(fileDescriptor, STDOUT_FILENO); 
+
       close(fileDescriptor);
     } else if (option == 1) {
-      // We open file for read only (it's STDIN)
+      // We open file for read only (it's STDIN).
       fileDescriptor = open(inputFile, O_RDONLY, 0600);  
-      // We replace de standard input with the appropriate file
+
+      // We replace standard input with the appropriate file.
       dup2(fileDescriptor, STDIN_FILENO);
+
       close(fileDescriptor);
-      // Same as before for the output file
+
+      // Same as before for the output file.
       fileDescriptor = open(outputFile, O_CREAT | O_TRUNC | O_WRONLY, 0600);
+
       dup2(fileDescriptor, STDOUT_FILENO);
       close(fileDescriptor);     
     }
@@ -253,7 +259,7 @@ int fileIO(char **argsWithoutRedirection, char *inputFile, char *outputFile, int
       perror("Error while starting the program");
     }
 
-    exit(EXIT_FAILURE);
+    return 1;
   } else if (pid < 0) {
     perror("Error forking");
   } else {
