@@ -184,7 +184,7 @@ int countCommands(char **args)
 */
 int launch(char **args)
 {
-  pid_t pid;\
+  pid_t pid;
   int status;
 
   // Forking: duplicating the process.  
