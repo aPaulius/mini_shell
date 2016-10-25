@@ -308,12 +308,12 @@ int execute(char **args)
   int i;
   int j = 0;
 
-  argsWithoutRedirection = removeRedirectionSymbols(args);
-
   if (args[0] == NULL) {
     // An empty command was entered.
     return 1;
   }
+
+  argsWithoutRedirection = removeRedirectionSymbols(args);
 
   for (i = 0; i < builtinsCount(); i++) {
     // Cheking if command is equal to buil-in command.
